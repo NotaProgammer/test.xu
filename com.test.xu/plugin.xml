@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.menus">
+         <menuContribution locationURI="menu:org.eclipse.ui.main.menu?before=help">
+         	<menu id="com.test.xu.custom" label="%CUSTOM.TIP">
+				<separator name="com.test.xu.custom.Start1" visible="true">
+				</separator>
+			</menu>
+		</menuContribution>	
+		<menuContribution locationURI="popup:org.eclipse.ui.popup.any?before=additions">
+			<command commandId="com.test.xu.GetCustomValue">
+			<visibleWhen>
+					<and>
+						<or>
+							<reference definitionId="com.teamcenter.rac.ui.inMainPerspective"/>
+						</or>
+						<with variable="rac_command_suppression">
+							<not>
+								<iterate operator="or">
+									<equals value="com.test.xu.GetCustomValue"/>
+								</iterate>
+							</not>
+						</with>
+				      <iterate ifEmpty="false">
+							<adapt type="java.lang.Object">
+								<test property="com.test.xu.handler.ProTester" forcePluginActivation="true"
+									value="" args="">
+								</test>
+							</adapt>
+						</iterate>
+					</and>
+				</visibleWhen>
+			</command>
+		</menuContribution>
+		<menuContribution locationURI="menu:com.test.xu.custom?before=com.test.xu.custom.Start1">
+			<command commandId="com.test.xu.k3search.K3SearchHandler">
+			</command>
+		</menuContribution>
+		<menuContribution locationURI="menu:com.test.xu.custom?before=com.test.xu.custom.Start1">
+			<command commandId="com.test.xu.search.XuSearch">
+			<visibleWhen>
+					<and>
+						<or>
+							<reference definitionId="com.teamcenter.rac.ui.inMainPerspective"/>
+						</or>
+						<with variable="rac_command_suppression">
+							<not>
+								<iterate operator="or">
+									<equals value="com.test.xu.search.XuSearch"/>
+								</iterate>
+							</not>
+						</with>
+					</and>
+				</visibleWhen>
+			</command>
+		</menuContribution>
+		<menuContribution locationURI="menu:com.test.xu.custom?before=com.test.xu.custom.Start1">
+			<command commandId="com.test.xu.SaveAs">
+			<visibleWhen>
+					<and>
+						<or>
+							<reference definitionId="com.teamcenter.rac.ui.inMainPerspective"/>
+						</or>
+						<with variable="selection">
+							<iterate ifEmpty="false">
+								<adapt type="com.teamcenter.rac.kernel.TCComponent">
+									<or>
+										<test property="com.teamcenter.rac.kernel.TCComponent.typeClass"
+											value="K3_theItemRevision"/>
+									</or>
+								</adapt>
+							</iterate>
+						</with>
+					</and>
+				</visibleWhen>
+			</command>
+		</menuContribution>
+	<menuContribution locationURI="menu:com.test.xu.custom?before=com.test.xu.custom.Start1">
+			<command commandId="com.test.xu.ReloadBOM">
+			<visibleWhen>
+					<and>
+						<or>
+							<reference definitionId="com.teamcenter.rac.ui.inMainPerspective"/>
+						</or>
+						<with variable="selection">
+							<iterate ifEmpty="false">
+								<adapt type="com.teamcenter.rac.kernel.TCComponent">
+									<or>
+										<test property="com.teamcenter.rac.kernel.TCComponent.typeClass"
+											value="K3_ItemRevision"/>
+									</or>
+								</adapt>
+							</iterate>
+						</with>
+					</and>
+				</visibleWhen>
+			</command>
+		</menuContribution>
+		<menuContribution locationURI="menu:com.test.xu.custom?before=com.test.xu.custom.Start1">
+			<command commandId="com.test.xu.input.InputHandler">
+			<visibleWhen>
+					<and>
+						<or>
+							<reference definitionId="com.teamcenter.rac.ui.inMainPerspective"/>
+						</or>
+						<with variable="rac_command_suppression">
+							<not>
+								<iterate operator="or">
+									<equals value="com.test.xu.input.InputHandler"/>
+								</iterate>
+							</not>
+						</with>
+					</and>
+				</visibleWhen>
+			</command>
+		</menuContribution>
+		<menuContribution locationURI="menu:com.test.xu.custom?after=com.test.xu.custom.Start1">
+			<command commandId="com.test.xu.SetDesc">
+			</command>
+		</menuContribution>
+		<menuContribution locationURI="popup:org.eclipse.ui.popup.any?after=additions">
+			<command commandId="com.test.xu.dialog.ChangePros">
+				<visibleWhen>
+					<and>
+						<or>
+							<reference definitionId="com.teamcenter.rac.ui.inMainPerspective"/>
+						</or>
+						<with variable="selection">
+							<iterate ifEmpty="false">
+								<adapt type="com.teamcenter.rac.kernel.TCComponent">
+									<or>
+										<test property="com.teamcenter.rac.kernel.TCComponent.typeClass"
+											value="K3_ItemRevision,K3_Item"/>
+									</or>
+								</adapt>
+							</iterate>
+						</with>
+					</and>
+				</visibleWhen>
+			</command>
+		</menuContribution>
+		<menuContribution locationURI="popup:org.eclipse.ui.popup.any?after=additions">
+			<command commandId="com.test.xu.dialog.ChangePros">
+				<visibleWhen>
+					<and>
+						<or>
+							<reference definitionId="com.teamcenter.rac.ui.inMainPerspective"/>
+						</or>
+						<with variable="selection">
+							<iterate ifEmpty="false">
+								<adapt type="com.teamcenter.rac.kernel.TCComponent">
+									<or>
+										<test property="com.teamcenter.rac.kernel.TCComponent.typeClass"
+											value="K3_ItemRevision,K3_Item"/>
+									</or>
+								</adapt>
+							</iterate>
+						</with>
+					</and>
+				</visibleWhen>
+			</command>
+		</menuContribution>
+		<menuContribution locationURI="popup:org.eclipse.ui.popup.any?after=additions">
+			<command commandId="com.test.xu.dialog.ChangeDesc">
+				<visibleWhen>
+					<and>
+						<or>
+							<reference definitionId="com.teamcenter.rac.ui.inMainPerspective"/>
+						</or>
+						<with variable="selection">
+							<iterate ifEmpty="false">
+								<adapt type="com.teamcenter.rac.kernel.TCComponent">
+									<or>
+										<test property="com.teamcenter.rac.kernel.TCComponent.typeClass"
+											value="K3_theItemRevision"/>
+									</or>
+								</adapt>
+							</iterate>
+						</with>
+					</and>
+				</visibleWhen>
+			</command>
+		</menuContribution>
+		<menuContribution locationURI="popup:org.eclipse.ui.popup.any?after=additions">
+			<command commandId="com.test.xu.task.SetReceive">
+				<visibleWhen>
+					<and>
+						<or>
+							<reference definitionId="com.teamcenter.rac.ui.inMainPerspective"/>
+						</or>
+						<with variable="selection">
+							<iterate ifEmpty="false">
+								<adapt type="com.teamcenter.rac.kernel.TCComponent">
+									<or>
+										<test property="com.teamcenter.rac.kernel.TCComponent.typeClass"
+											value="EPMTask"/>
+									</or>
+								</adapt>
+							</iterate>
+						</with>
+					</and>
+				</visibleWhen>
+			</command>
+		</menuContribution>
+		<menuContribution locationURI="popup:org.eclipse.ui.popup.any?after=additions">
+			<command commandId="com.test.xu.input.OfficeToPDF">
+				<visibleWhen>
+					<and>
+						<or>
+							<reference definitionId="com.teamcenter.rac.ui.inMainPerspective"/>
+						</or>
+						<with variable="selection">
+							<iterate ifEmpty="false">
+								<adapt type="com.teamcenter.rac.kernel.TCComponent">
+									<or>
+										<test property="com.teamcenter.rac.kernel.TCComponent.typeClass"
+											value="ItemRevision"/>
+									</or>
+								</adapt>
+							</iterate>
+						</with>
+					</and>
+				</visibleWhen>
+			</command>
+		</menuContribution>
+			<menuContribution locationURI="popup:org.eclipse.ui.popup.any?after=additions">
+			<command commandId="com.test.xu.output.OutputBom1">
+				<visibleWhen>
+					<and>
+						<or>
+							<reference definitionId="com.teamcenter.rac.ui.inMainPerspective"/>
+							<reference definitionId="com.teamcenter.rac.pse.inMainView"/>
+						</or>
+						<with variable="selection">
+							<iterate ifEmpty="false">
+								<adapt type="com.teamcenter.rac.kernel.TCComponent">
+									<or>
+										<test property="com.teamcenter.rac.kernel.TCComponent.typeClass"
+											value="ItemRevision,Item,BOMLine"/>
+									</or>
+								</adapt>
+							</iterate>
+						</with>
+					</and>
+				</visibleWhen>
+			</command>
+		</menuContribution>
+		<menuContribution locationURI="toolbar:navigator_Toolbar?after=additions">
+			<command commandId="com.test.xu.SetDesc"
+			icon="icons/sample.gif"
+			id="com.test.xu.toolSetDesc">
+			   	<visibleWhen>
+               		<reference
+                  		definitionId="com.teamcenter.rac.ui.inMainPerspective">
+               		</reference>
+            	</visibleWhen>
+			</command>
+		</menuContribution>
+		<!--
+			<menuContribution locationURI="menu:com.test.xu.custom?before=com.test.xu.custom.Start1">
+			<command commandId="com.test.xu.GenerateFigure">
+			<visibleWhen>
+					<and>
+						<or>
+							<reference definitionId="com.teamcenter.rac.ui.inMainPerspective"/>
+						</or>
+						<with variable="selection">
+							<iterate ifEmpty="false">
+								<adapt type="com.teamcenter.rac.kernel.TCComponent">
+									<or>
+										<test property="com.teamcenter.rac.kernel.TCComponent.typeClass"
+											value="K3_ItemRevision"/>
+									</or>
+								</adapt>
+							</iterate>
+						</with>
+					</and>
+				</visibleWhen>
+			</command>
+		</menuContribution>
+		-->
+   </extension>
+   
+   
+   <extension
+         point="org.eclipse.ui.commands">
+		<!-- get custom  property value  -->
+		<command defaultHandler="com.test.xu.GetCustomValue"
+			id="com.test.xu.GetCustomValue" name="%GetCustomValue">
+		</command>
+		<!-- set description  -->
+		<command defaultHandler="com.test.xu.SetDesc"
+			id="com.test.xu.SetDesc" name="%SetDesc">
+		</command>
+		<!-- change Attr1  -->
+		<command defaultHandler="com.test.xu.dialog.ChangePros"
+			id="com.test.xu.dialog.ChangePros" name="菜单1">
+		</command>
+		<!-- change description  -->
+		<command defaultHandler="com.test.xu.dialog.ChangeDesc"
+			id="com.test.xu.dialog.ChangeDesc" name="修改物料描述">
+		</command>
+		<!-- popup 添加关系  -->
+		<command defaultHandler="com.test.xu.Addrelation"
+			id="com.test.xu.Addrelation" name="Addrelation">
+		</command>
+		<!-- popup 添加关系  -->
+		<command defaultHandler="com.test.xu.search.XuSearch"
+			id="com.test.xu.search.XuSearch" name="菜单2">
+		</command>
+		<!-- 导出Bom  -->
+		<command defaultHandler="com.test.xu.output.OutputBom"
+			id="com.test.xu.output.OutputBom" name="菜单3">
+		</command>
+		<!-- 导出多层级Bom  -->
+		<command defaultHandler="com.test.xu.output.OutputBom1"
+			id="com.test.xu.output.OutputBom1" name="菜单4">
+		</command>
+		<!-- 客户化查询 -->
+		<command defaultHandler="com.test.xu.k3search.K3SearchHandler"
+			id="com.test.xu.k3search.K3SearchHandler" name="长虹零件查询">
+		<!-- 导入数据-->
+		</command>
+			<command defaultHandler="com.test.xu.input.InputHandler"
+			id="com.test.xu.input.InputHandler" name="数据导入">
+		<!-- office转换pdf-->
+		</command>
+			<command defaultHandler="com.test.xu.input.OfficeToPDF"
+			id="com.test.xu.input.OfficeToPDF" name="office转换pdf">
+		</command>
+        <!--设置下一任务接收人-->
+		<command defaultHandler="com.test.xu.task.SetReceive"
+			id="com.test.xu.task.SetReceive" name="设置下一任务接收人">
+		</command>
+		<!--更改修订-->
+		<command defaultHandler="com.test.xu.SaveAs"
+			id="com.test.xu.SaveAs" name="更改修订">
+		</command>
+			<!--重构EBOM-->
+		<command defaultHandler="com.test.xu.ReloadBOM"
+			id="com.test.xu.ReloadBOM" name="重构MBOM">
+		</command>
+		
+		<!--更改修订
+		<command defaultHandler="com.test.xu.GenerateFigure"
+			id="com.test.xu.GenerateFigure" name="生成图号">
+		</command>
+		-->
+   </extension>
+   
+   
+   <!-- Tester -->
+	<extension point="org.eclipse.core.expressions.propertyTesters">
+		<propertyTester
+			id="com.test.xu.handler.ProTester"
+			type="java.lang.Object"
+			namespace="com.test.xu.handler"
+			properties="ProTester"
+			class="com.test.xu.handler.ProTester">
+		</propertyTester>
+	</extension>
+	
+	<extension point="com.teamcenter.rac.common.renderingHint">
+		<renderingHint id="multipleattr" priority="0">
+			<legacyPropertyBean class="com.test.xu.stylesheet.MultipleattrTable"/>   
+		</renderingHint>
+		<renderingHint id="uomtag" priority="0">
+			<legacyPropertyBean class="com.test.xu.stylesheet.Setuomtag"/>   
+		</renderingHint>
+	</extension>
+    <extension point="org.eclipse.ui.views">
+		<view
+			name="MyCom Custom View"
+			class="com.test.xu.view.MyView"
+			id="com.test.xu.view.MyView">
+		</view>
+ 	</extension>
+ 	<extension point="org.eclipse.core.expressions.definitions">
+		<definition id="com.mycom.customview.inMainView">
+			<with variable="activePartId">
+				<equals value="com.test.xu.view.MyView" />
+			</with>
+		</definition>
+ 	</extension>
+</plugin>
